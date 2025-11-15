@@ -1,8 +1,8 @@
 <template>
-	<main class="p-4">
-		<router-view />
-	</main>
-	<!-- 本项目为“二次封装方法论演示”，不引入 UI 库 -->
+  <main class="p-4">
+    <router-view />
+  </main>
+  <!-- 本项目为“二次封装方法论演示”，不引入 UI 库 -->
 </template>
 
 <script setup lang="ts">
@@ -12,5 +12,3 @@
 <style scoped>
 /* 保持极简，不做样式系统 */
 </style>
-
-

@@ -36,8 +36,8 @@ const props = withDefaults(
   {
     modelValue: '',
     disabled: false,
-    ariaLabel: 'second wrap input'
-  }
+    ariaLabel: 'second wrap input',
+  },
 )
 
 const emit = defineEmits<{
@@ -50,16 +50,14 @@ const attrs = useAttrs()
 // 演示：有选择地透传属性，避免“封死”
 const passThroughAttrs = computed(() => {
   const { class: klass, style, placeholder, title, id, ...rest } = attrs as Record<string, any>
-  const ariaAndDataEntries = Object.entries(rest).filter(
-    ([k]) => k.startsWith('aria-') || k.startsWith('data-')
-  )
+  const ariaAndDataEntries = Object.entries(rest).filter(([k]) => k.startsWith('aria-') || k.startsWith('data-'))
   return {
     class: klass,
     style,
     placeholder,
     title,
     id,
-    ...Object.fromEntries(ariaAndDataEntries)
+    ...Object.fromEntries(ariaAndDataEntries),
   }
 })
 
@@ -69,7 +67,7 @@ const localValue = computed({
     if (props.disabled) return
     emit('update:modelValue', v ?? '')
     emit('change', v ?? '')
-  }
+  },
 })
 
 const handleInput = (v: string) => {

@@ -1,63 +1,57 @@
 <template>
-	<section class="p-4 flex flex-col gap-4">
-		<h1 class="text-xl font-bold">二次封装方法论演示</h1>
+  <section class="p-4 flex flex-col gap-4">
+    <h1 class="text-xl font-bold">二次封装方法论演示</h1>
 
-		<div class="flex items-center gap-2">
-			<label class="flex items-center gap-2">
-				<input type="checkbox" :checked="disabled" @change="handleToggleDisabled" aria-label="toggle disabled" />
-				<span>禁用</span>
-			</label>
-			<button
-				type="button"
-				@click="handleFocus"
-				@keydown.enter.prevent="handleFocus"
-				@keydown.space.prevent="handleFocus"
-				tabindex="0"
-				aria-label="focus input"
-				class="border px-2 py-1 rounded"
-			>
-				聚焦输入
-			</button>
-		</div>
+    <div class="flex items-center gap-2">
+      <label class="flex items-center gap-2">
+        <input type="checkbox" :checked="disabled" @change="handleToggleDisabled" aria-label="toggle disabled" />
+        <span>禁用</span>
+      </label>
+      <button
+        type="button"
+        @click="handleFocus"
+        @keydown.enter.prevent="handleFocus"
+        @keydown.space.prevent="handleFocus"
+        tabindex="0"
+        aria-label="focus input"
+        class="border px-2 py-1 rounded"
+      >
+        聚焦输入
+      </button>
+    </div>
 
-		<SecondWrap
-			ref="wrapRef"
-			v-model="inputValue"
-			:disabled="disabled"
-			placeholder="请输入内容"
-			title="演示输入"
-			data-track-id="demo-input"
-			aria-label="二次封装输入"
-			@change="handleChange"
-		>
-			<template #header="{ value }">
-				<div class="text-sm text-gray-500">当前值（header 插槽）: {{ value }}</div>
-			</template>
+    <SecondWrap
+      ref="wrapRef"
+      v-model="inputValue"
+      :disabled="disabled"
+      placeholder="请输入内容"
+      title="演示输入"
+      data-track-id="demo-input"
+      aria-label="二次封装输入"
+      @change="handleChange"
+    >
+      <template #header="{ value }">
+        <div class="text-sm text-gray-500">当前值（header 插槽）: {{ value }}</div>
+      </template>
 
-			<template #default="{ setValue }">
-				<div class="text-sm">
-					默认插槽可拿到 slot props：
-					<button
-						type="button"
-						@click="() => setValue('hello')"
-						tabindex="0"
-						aria-label="set hello"
-						class="underline"
-					>
-						设置为 'hello'
-					</button>
-				</div>
-			</template>
+      <template #default="{ setValue }">
+        <div class="text-sm">
+          默认插槽可拿到 slot props：
+          <button type="button" @click="() => setValue('hello')" tabindex="0" aria-label="set hello" class="underline">
+            设置为 'hello'
+          </button>
+        </div>
+      </template>
 
-			<template #footer="{ value }">
-				<div class="text-sm text-gray-500">底部（footer 插槽）: 长度 {{ value.length }}</div>
-			</template>
-		</SecondWrap>
+      <template #footer="{ value }">
+        <div class="text-sm text-gray-500">底部（footer 插槽）: 长度 {{ value.length }}</div>
+      </template>
+    </SecondWrap>
 
-		<div class="text-sm">
-			v-model 值：<code>{{ inputValue }}</code>
-		</div>
-	</section>
+    <div class="text-sm">
+      v-model 值：<code>{{ inputValue }}</code>
+    </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -71,19 +65,17 @@ const wrapRef = ref<{ focus: () => void } | null>(null)
 const handleFocus = () => wrapRef.value?.focus()
 
 const handleToggleDisabled = (e: Event) => {
-	const target = e.target as HTMLInputElement | null
-	if (!target) return
-	disabled.value = target.checked
+  const target = e.target as HTMLInputElement | null
+  if (!target) return
+  disabled.value = target.checked
 }
 
 const handleChange = (v: string) => {
-	// 演示：可监听 change 事件
-	console.log('SecondWrap change:', v)
+  // 演示：可监听 change 事件
+  console.log('SecondWrap change:', v)
 }
 </script>
 
 <style scoped>
 /* 仅为演示页面，不引入 UI 库与额外样式系统 */
 </style>
-
-
