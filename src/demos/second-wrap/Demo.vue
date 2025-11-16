@@ -56,7 +56,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import SecondWrap from '../components/demo/SecondWrap.vue'
+import SecondWrap from '../../components/demo/SecondWrap.vue'
 
 const inputValue = ref('') // 受控数据
 const disabled = ref(false)

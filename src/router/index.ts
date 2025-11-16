@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
+import { demoRoutes } from '../demos/registry'
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'home',
-    component: () => import('../views/DemoSecondWrap.vue'),
+    component: () => import('../views/Home.vue'),
   },
+  ...demoRoutes,
 ]
 
 const router = createRouter({
