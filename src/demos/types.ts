@@ -6,4 +6,5 @@ export type DemoMeta = {
   description?: string
   keywords?: string[]
   enabled?: boolean
+  hideLayoutHeader?: boolean
 }

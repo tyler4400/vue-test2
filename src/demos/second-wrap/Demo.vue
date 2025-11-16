@@ -1,7 +1,5 @@
 <template>
   <section class="p-4 flex flex-col gap-4">
-    <h1 class="text-xl font-bold">二次封装方法论演示</h1>
-
     <div class="flex items-center gap-2">
       <label class="flex items-center gap-2">
         <input type="checkbox" :checked="disabled" @change="handleToggleDisabled" aria-label="toggle disabled" />
@@ -103,10 +101,10 @@ const handleChange = (v: string) => {
 }
 button {
   padding: 6px 10px;
-  border: 1px solid var(--bd-1, #d0d0d0);
+  border: 1px solid #d0d0d0;
   border-radius: 6px;
-  background: var(--bg-btn, #fff);
-  color: var(--fg-1, #222);
+  background: #fff;
+  color: #222;
   cursor: pointer;
 }
 button:hover {

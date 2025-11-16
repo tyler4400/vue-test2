@@ -27,7 +27,7 @@ export const demoRoutes: RouteRecordRaw[] = demos.map(meta => {
   const key = `./${meta.slug}/Demo.vue`
   const loader = (viewModules as Record<string, any>)[key]
   return {
-    path: `/demos/${meta.slug}`,
+    path: `${meta.slug}`,
     name: meta.slug,
     component: loader,
     meta,
