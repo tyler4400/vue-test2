@@ -1,6 +1,6 @@
 <template>
-  <section class="flex flex-col gap-2">
-    <header v-if="$slots.header">
+  <section class="wrap">
+    <header v-if="$slots.header" class="wrap__header">
       <slot name="header" :value="localValue" />
     </header>
 
@@ -13,9 +13,11 @@
       @input="handleInput"
     />
 
-    <slot :value="localValue" :disabled="disabled" :setValue="setValue" />
+    <div class="wrap__slot">
+      <slot :value="localValue" :disabled="disabled" :setValue="setValue" />
+    </div>
 
-    <footer v-if="$slots.footer">
+    <footer v-if="$slots.footer" class="wrap__footer">
       <slot name="footer" :value="localValue" />
     </footer>
   </section>
@@ -87,5 +89,18 @@ defineExpose({ focus })
 </script>
 
 <style scoped>
-/* 方法论演示，不做复杂样式 */
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.wrap__header,
+.wrap__footer {
+  font-size: 12px;
+  color: #666;
+}
+.wrap__slot {
+  font-size: 12px;
+  color: #333;
+}
 </style>

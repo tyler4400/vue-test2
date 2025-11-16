@@ -1,41 +1,30 @@
 <template>
-  <section class="p-4 flex flex-col gap-4">
-    <h1 class="text-2xl font-bold">Demo 索引</h1>
-
-    <div class="flex items-center gap-2">
+  <section class="home">
+    <header class="home__header">
+      <h1 class="home__title">Demo 索引</h1>
       <input
         v-model="keyword"
         type="text"
-        placeholder="搜索标题 / 关键词..."
+        placeholder="搜索标题 / 关键词…"
         aria-label="search demos"
-        class="border rounded px-3 py-2 w-full max-w-md outline-none focus:ring-2 focus:ring-blue-500"
+        class="home__search"
       />
-    </div>
+    </header>
 
-    <div v-for="(items, group) in grouped" :key="group" class="flex flex-col gap-2">
-      <h2 class="text-lg font-semibold">{{ group || '未分组' }}</h2>
-      <ul class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-        <li v-for="meta in items" :key="meta.slug" class="border rounded p-3 hover:shadow-sm">
-          <RouterLink
-            :to="`/demos/${meta.slug}`"
-            class="text-blue-600 hover:underline"
-            :aria-label="`go to ${meta.title}`"
-          >
+    <section v-for="(items, group) in grouped" :key="group" class="home__group">
+      <h2 class="home__group-title">{{ group || '未分组' }}</h2>
+      <ul class="home__grid">
+        <li v-for="meta in items" :key="meta.slug" class="card">
+          <RouterLink :to="`/demos/${meta.slug}`" class="card__title" :aria-label="`go to ${meta.title}`">
             {{ meta.title }}
           </RouterLink>
-          <p v-if="meta.description" class="text-xs text-gray-500 mt-1">{{ meta.description }}</p>
-          <div v-if="meta.keywords?.length" class="mt-2 flex flex-wrap gap-1">
-            <span
-              v-for="k in meta.keywords"
-              :key="k"
-              class="text-[10px] bg-gray-100 border rounded px-1 py-0.5 text-gray-600"
-            >
-              {{ k }}
-            </span>
+          <p v-if="meta.description" class="card__desc">{{ meta.description }}</p>
+          <div v-if="meta.keywords?.length" class="card__tags">
+            <span v-for="k in meta.keywords" :key="k" class="tag">{{ k }}</span>
           </div>
         </li>
       </ul>
-    </div>
+    </section>
   </section>
 </template>
 
@@ -68,5 +57,112 @@ const grouped = computed(() => {
 </script>
 
 <style scoped>
-/* 简单索引页，不引入 UI 库 */
+.home {
+  padding: 16px;
+  text-align: left;
+}
+.home__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.home__title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #222;
+}
+.home__search {
+  width: 320px;
+  max-width: 50vw;
+  padding: 8px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+  color: #222;
+}
+.home__search:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+}
+.home__group {
+  margin-top: 8px;
+}
+.home__group-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222;
+  margin: 8px 0 10px;
+}
+.home__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.card {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 12px;
+  background: #fff;
+}
+.card__title {
+  color: #2563eb;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  text-align: left;
+}
+.card__title:hover {
+  text-decoration: underline;
+}
+.card__desc {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #666;
+}
+.card__tags {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tag {
+  font-size: 10px;
+  padding: 2px 6px;
+  border: 1px solid #e0e0e0;
+  border-radius: 999px;
+  color: #555;
+  background: #f8f8f8;
+}
+@media (prefers-color-scheme: dark) {
+  .home {
+    color: #e9e9e9;
+  }
+  .home__title {
+    color: #fafafa;
+  }
+  .home__search {
+    background: #1f1f1f;
+    color: #e9e9e9;
+    border-color: #3a3a3a;
+  }
+  .card {
+    background: #141414;
+    border-color: #2a2a2a;
+  }
+  .card__desc {
+    color: #a1a1a1;
+  }
+  .tag {
+    background: #1e1e1e;
+    border-color: #333;
+    color: #bdbdbd;
+  }
+}
 </style>

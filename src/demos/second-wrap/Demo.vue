@@ -56,7 +56,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import SecondWrap from '../../components/demo/SecondWrap.vue'
+import SecondWrap from './SecondWrap.vue'
 
 const inputValue = ref('') // 受控数据
 const disabled = ref(false)
@@ -77,5 +77,49 @@ const handleChange = (v: string) => {
 </script>
 
 <style scoped>
-/* 仅为演示页面，不引入 UI 库与额外样式系统 */
+.p-4 {
+  padding: 16px;
+}
+.text-xl {
+  font-size: 20px;
+}
+.font-bold {
+  font-weight: 700;
+}
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.gap-4 {
+  gap: 16px;
+}
+.items-center {
+  align-items: center;
+}
+.gap-2 {
+  gap: 8px;
+}
+button {
+  padding: 6px 10px;
+  border: 1px solid var(--bd-1, #d0d0d0);
+  border-radius: 6px;
+  background: var(--bg-btn, #fff);
+  color: var(--fg-1, #222);
+  cursor: pointer;
+}
+button:hover {
+  background: #f7f7f7;
+}
+@media (prefers-color-scheme: dark) {
+  button {
+    background: #1f1f1f;
+    color: #e9e9e9;
+    border-color: #3a3a3a;
+  }
+  button:hover {
+    background: #2a2a2a;
+  }
+}
 </style>

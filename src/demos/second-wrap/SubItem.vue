@@ -1,12 +1,12 @@
 <template>
-  <label class="flex flex-col gap-1">
-    <span class="text-sm text-gray-600">{{ label }}</span>
+  <label class="field">
+    <span class="field__label">{{ label }}</span>
     <input
       v-bind="attrs"
       :value="value"
       :disabled="disabled"
       @input="handleInput"
-      class="border px-2 py-1 rounded outline-none focus:ring-2 focus:ring-blue-500"
+      class="field__input"
       :aria-label="ariaLabel"
       ref="inputEl"
     />
@@ -53,5 +53,39 @@ defineExpose({ focus })
 </script>
 
 <style scoped>
-/* 演示组件，样式保持最小化 */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field__label {
+  font-size: 12px;
+  color: #666;
+}
+.field__input {
+  padding: 8px 10px;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  outline: none;
+  background: #fff;
+  color: #222;
+}
+.field__input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+}
+@media (prefers-color-scheme: dark) {
+  .field__label {
+    color: #aaa;
+  }
+  .field__input {
+    background: #1f1f1f;
+    border-color: #3a3a3a;
+    color: #e9e9e9;
+  }
+  .field__input:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.25);
+  }
+}
 </style>
