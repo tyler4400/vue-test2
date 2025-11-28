@@ -1,16 +1,26 @@
 import type { RouteRecordRaw } from 'vue-router'
-import type { DemoMeta } from './types'
+import type { DemoMeta, Meta } from './types'
 
 // 读取所有 meta（eager），用于生成索引与路由
-const metaModules = import.meta.glob('./**/meta.ts', { eager: true })
-// 读取所有 Demo.vue（lazy），用于路由懒加载
-const viewModules = import.meta.glob('./**/Demo.vue')
+const metaModules: Record<string, DemoMeta> = import.meta.glob('./**/meta.ts', { eager: true, import: 'default' })
+console.log('demoMeta配置', metaModules)
 
-const isEnabled = (m: Partial<DemoMeta> | undefined) => m && m.enabled !== false
+function handleKey(key: string) {
+  return 'second-wrap'
+}
 
-const demos: DemoMeta[] = Object.values(metaModules)
-  .map(m => (m as any).default as DemoMeta)
-  .filter(isEnabled)
+export const demoList: Meta[] = Object.entries(metaModules)
+  .map(([key, meta]) => {
+    const folder = handleKey(key)
+    const routerPath = meta.routerPath ?? folder
+    return {
+      ...meta,
+      folder,
+      routerPath,
+      disabled: meta.disabled ?? false,
+    } as Meta
+  })
+  .filter(meta => !meta.disabled)
   .sort((a, b) => {
     const ga = a.group ?? ''
     const gb = b.group ?? ''
@@ -21,15 +31,18 @@ const demos: DemoMeta[] = Object.values(metaModules)
     return a.title.localeCompare(b.title)
   })
 
-export const demoList: DemoMeta[] = demos
+// 读取所有 Demo.vue（lazy），用于路由懒加载
+const viewModules = import.meta.glob('./**/index.ts')
+console.log('所有demo模块：', viewModules)
 
-export const demoRoutes: RouteRecordRaw[] = demos.map(meta => {
-  const key = `./${meta.slug}/Demo.vue`
+export const demoRoutes: RouteRecordRaw[] = demoList.map(meta => {
+  const key = `./second-wrap/index.ts`
   const loader = (viewModules as Record<string, any>)[key]
   return {
-    path: `${meta.slug}`,
-    name: meta.slug,
-    component: loader,
+    path: `${meta.routerPath}`,
+    name: meta.folder,
+    component: loader as RouteRecordRaw['component'],
     meta,
-  }
+  } as RouteRecordRaw
 })
+console.log('registry.ts--demoRoutes: ', demoRoutes)

@@ -14,8 +14,8 @@
     <section v-for="(items, group) in grouped" :key="group" class="home__group">
       <h2 class="home__group-title">{{ group || '未分组' }}</h2>
       <ul class="home__grid">
-        <li v-for="meta in items" :key="meta.slug" class="card">
-          <RouterLink :to="`/demos/${meta.slug}`" class="card__title" :aria-label="`go to ${meta.title}`">
+        <li v-for="meta in items" :key="meta.folder" class="card">
+          <RouterLink :to="`/demos/${meta.routerPath}`" class="card__title" :aria-label="`go to ${meta.title}`">
             {{ meta.title }}
           </RouterLink>
           <p v-if="meta.description" class="card__desc">{{ meta.description }}</p>
