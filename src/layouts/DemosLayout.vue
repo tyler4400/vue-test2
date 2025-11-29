@@ -46,14 +46,15 @@ const handleBack = () => {
   align-items: center;
   gap: 12px;
   padding: 0 16px;
-  border-bottom: 1px solid #e5e5e5;
-  background: #fff;
+  border-bottom: 1px solid var(--color-surface-border);
+  background: var(--color-surface-bg);
 }
 .layout__back {
-  border: 1px solid #d0d0d0;
-  background: #fff;
+  border: 1px solid var(--color-input-border);
+  background: var(--color-input-bg);
   border-radius: 8px;
   padding: 6px 10px;
+  color: var(--color-input-text);
   cursor: pointer;
 }
 .layout__title {
@@ -63,16 +64,5 @@ const handleBack = () => {
 }
 .layout__body {
   padding: 16px;
-}
-@media (prefers-color-scheme: dark) {
-  .layout__header {
-    background: #141414;
-    border-color: #2a2a2a;
-  }
-  .layout__back {
-    background: #1f1f1f;
-    color: #e9e9e9;
-    border-color: #3a3a3a;
-  }
 }
 </style>

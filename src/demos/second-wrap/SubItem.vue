@@ -60,32 +60,18 @@ defineExpose({ focus })
 }
 .field__label {
   font-size: 12px;
-  color: #666;
+  color: var(--color-text-muted);
 }
 .field__input {
   padding: 8px 10px;
-  border: 1px solid #d0d0d0;
+  border: 1px solid var(--color-input-border);
   border-radius: 6px;
   outline: none;
-  background: #fff;
-  color: #222;
+  background: var(--color-input-bg);
+  color: var(--color-input-text);
 }
 .field__input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
-}
-@media (prefers-color-scheme: dark) {
-  .field__label {
-    color: #aaa;
-  }
-  .field__input {
-    background: #1f1f1f;
-    border-color: #3a3a3a;
-    color: #e9e9e9;
-  }
-  .field__input:focus {
-    border-color: #60a5fa;
-    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.25);
-  }
+  border-color: var(--color-focus-border);
+  box-shadow: var(--shadow-focus-ring);
 }
 </style>
