@@ -97,10 +97,10 @@ defineExpose({ focus })
 .wrap__header,
 .wrap__footer {
   font-size: 12px;
-  color: #666;
+  color: var(--color-text-muted);
 }
 .wrap__slot {
   font-size: 12px;
-  color: #333;
+  color: var(--color-page-text);
 }
 </style>

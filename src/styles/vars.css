@@ -1,0 +1,59 @@
+:root {
+  /* 页面背景与主文字颜色（明亮模式默认） */
+  --color-page-bg: #ffffff;
+  --color-page-text: #213547;
+
+  /* 标题和弱化文字 */
+  --color-heading: #222222;
+  --color-text-muted: #666666;
+
+  /* 通用容器背景与边框（卡片、Header 等） */
+  --color-surface-bg: #ffffff;
+  --color-surface-border: #e0e0e0;
+
+  /* 输入框 / 按钮通用色 */
+  --color-input-bg: #ffffff;
+  --color-input-text: #222222;
+  --color-input-border: #d0d0d0;
+
+  /* 链接颜色 */
+  --color-link: #646cff;
+  --color-link-hover: #535bf2;
+
+  /* 通用焦点边框与光晕 */
+  --color-focus-border: #3b82f6;
+  --shadow-focus-ring: 0 0 0 2px rgba(59, 130, 246, 0.15);
+
+  /* Tag 默认颜色 */
+  --color-tag-bg: #f8f8f8;
+  --color-tag-border: #e0e0e0;
+}
+
+:root[data-theme='dark'] {
+  /* 告知浏览器处于暗黑模式，配合表单控件等系统样式 */
+  color-scheme: dark;
+
+  --color-page-bg: #242424;
+  --color-page-text: #e9e9e9;
+
+  --color-heading: #fafafa;
+  --color-text-muted: #aaaaaa;
+
+  --color-surface-bg: #141414;
+  --color-surface-border: #2a2a2a;
+
+  --color-input-bg: #1f1f1f;
+  --color-input-text: #e9e9e9;
+  --color-input-border: #3a3a3a;
+
+  --color-link: #60a5fa;
+  --color-link-hover: #3b82f6;
+
+  --color-focus-border: #60a5fa;
+  --shadow-focus-ring: 0 0 0 2px rgba(96, 165, 250, 0.25);
+
+  --color-tag-bg: #1e1e1e;
+  --color-tag-border: #333333;
+}
+
+
