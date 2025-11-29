@@ -1,4 +1,6 @@
-export interface DemoMeta {
+import type { RouteMeta } from 'vue-router'
+
+export interface DemoMeta extends RouteMeta {
   routerPath?: string // 没有就以文件夹名称为路由
   title: string
   group?: string
