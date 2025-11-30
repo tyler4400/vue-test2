@@ -1,0 +1,92 @@
+/* FancyInput 的基础样式，尽量与现有站点视觉保持一致，并复用主题变量 */
+
+.fancy-input {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color-input-border);
+  background-color: var(--color-input-bg);
+  color: var(--color-input-text);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+/* 大小规格：默认 large，small 稍微紧凑一些 */
+.fancy-input--large {
+  /*min-height: 30px;*/
+  font-size: 14px;
+}
+
+.fancy-input--small {
+  /*min-height: 28px;*/
+  font-size: 13px;
+}
+
+/* 当内部任一可聚焦元素获得焦点时，高亮边框与焦点光晕 */
+.fancy-input:focus-within {
+  border-color: var(--color-focus-border);
+  box-shadow: var(--shadow-focus-ring);
+}
+
+/* 禁用态整体半透明，并禁止鼠标交互 */
+.fancy-input--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 真实的输入框占满剩余空间，背景透明，继承字体与颜色 */
+.fancy-input__control {
+  flex: 1 1 auto;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: inherit;
+  font: inherit;
+  min-width: 0;
+  padding: 0;
+}
+
+.fancy-input__control::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* 前后缀区域：用于图标或说明文字 */
+.fancy-input__prefix,
+.fancy-input__suffix {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+/* 清除按钮与密码切换按钮统一样式 */
+.fancy-input__clear,
+.fancy-input__password-toggle {
+  border: none;
+  background: transparent;
+  padding: 0 2px;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fancy-input__clear:hover,
+.fancy-input__password-toggle:hover {
+  color: var(--color-link);
+}
+
+.fancy-input__clear:focus-visible,
+.fancy-input__password-toggle:focus-visible {
+  outline: none;
+  border-radius: 999px;
+  box-shadow: var(--shadow-focus-ring);
+}
+
+
