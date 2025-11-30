@@ -16,8 +16,8 @@
 
     <!-- 搜索框下移到标题下方 -->
     <div class="home__search-row">
-      <input
-        v-model="keyword"
+      <FancyInput
+        v-model:modalValue="keyword"
         type="text"
         placeholder="搜索标题 / 关键词…"
         aria-label="search demos"
@@ -45,6 +45,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import { demoList } from '../demos/registry'
+import { FancyInput } from '../components/input'
 
 type UiTheme = 'light' | 'dark'
 const THEME_STORAGE_KEY = 'demo-ui-theme'
@@ -144,17 +145,8 @@ const grouped = computed(() => {
 .home__search {
   width: 320px;
   max-width: 50vw;
-  padding: 8px 12px;
-  border: 1px solid var(--color-input-border);
-  border-radius: 8px;
-  outline: none;
-  background: var(--color-input-bg);
-  color: var(--color-input-text);
 }
-.home__search:focus {
-  border-color: var(--color-focus-border);
-  box-shadow: var(--shadow-focus-ring);
-}
+
 .home__theme-toggle {
   padding: 6px 10px;
   border-radius: 8px;
