@@ -66,12 +66,15 @@
 <script setup lang="ts">
 import { computed, ref, useAttrs, watch } from 'vue'
 import type { StyleValue } from 'vue'
-import type { InputEmits, InputInstance, InputProps, InputValue } from './types'
+import type { InputEmits, InputInstance, InputProps, InputSlots, InputValue } from './types'
 
 // 禁用默认的属性继承行为，改为手动控制根元素与 input 上的属性分发
 defineOptions({
   inheritAttrs: false,
 })
+
+// 声明对外暴露的插槽类型，方便在 TS / 模板中获得完善的提示
+defineSlots<InputSlots>()
 
 // 使用 withDefaults 为部分 props 提供默认值
 const props = withDefaults(defineProps<InputProps>(), {

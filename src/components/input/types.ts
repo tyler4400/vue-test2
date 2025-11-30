@@ -36,4 +36,10 @@ export interface InputInstance {
   ref: HTMLInputElement | HTMLTextAreaElement | null
 }
 
-
+// 对外暴露的插槽类型，方便在 TS 中获得良好的提示与约束
+export interface InputSlots {
+  // 前缀插槽，一般用于图标或说明文字
+  prefix?: () => unknown
+  // 后缀插槽，一般用于图标、单位或操作区域
+  suffix?: () => unknown
+}
