@@ -10,6 +10,7 @@ export interface InputProps {
   modalValue?: InputValue
   size?: InputSize
   disabled?: boolean
+  // 是否可以清除输入内容
   clearable?: boolean
   showPassword?: boolean
   placeholder?: string
