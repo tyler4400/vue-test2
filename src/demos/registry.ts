@@ -27,7 +27,7 @@ console.log('demoMeta配置', metaModules)
 
 /**
  * 从 import.meta.glob 生成的路径中提取目录名
- * 例如：'./second-wrap/meta.ts' -> 'second-wrap'
+ * 例如：'./comp-wrap-expose/meta.ts' -> 'comp-wrap-expose'
  */
 const handleKey = (key: string): string => {
   // 使用正则匹配固定格式：./folderName/meta.ts
